@@ -169,7 +169,11 @@
          <!-- header section strats -->
            @include('home.header')
          <!-- end header section -->
-      
+         @if(session()->has('message'))
+         <div class="alert alert-success">
+             {{session()->get('message')}}
+         </div>
+        @endif
       <div class="product">
         <!-- Product Header -->
         <div class="product-header">
@@ -202,16 +206,20 @@
         </div>
 
         <!-- Add to Cart Section -->
-        <div class="product-add-to-cart">
-            <div>
-                <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" class="quantity-input" value="1" min="1">
+        <form action="{{url('add_cart', $product->id)}}" method="POST">
+            @csrf
+            <div class="product-add-to-cart">
+                <div>
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" class="quantity-input" name="quantity" value="1" min="1">
+                </div>
+                <div>
+                    <input type="submit" value="Add to Cart" class="add-to-cart-btn">
+                </div>
             </div>
-            <div>
-                <button class="add-to-cart-btn">Add to Cart</button>
-            </div>
-        </div>
-
+    
+        </form>
+        
         <!-- Product Reviews -->
         <div class="product-reviews">
             <h2>Reviews</h2>

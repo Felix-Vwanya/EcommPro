@@ -7,6 +7,9 @@ use App\Http\Controllers\AdminController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/redirect', [HomeController::class, 'redirect']);
 Route::get('/product_detail/{id}', [HomeController::class, 'product_detail']);
+Route::post('/add_cart/{id}', [HomeController::class, 'add_cart']);
+Route::get('/show_cart', [HomeController::class, 'show_cart']);
+Route::get('/delete_cart_item/{id}', [HomeController::class, 'delete_cart_item']);
 
 Route::middleware([
     'auth:sanctum',

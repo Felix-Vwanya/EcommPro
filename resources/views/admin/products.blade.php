@@ -73,6 +73,11 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
+                @if(session()->has('message'))
+                 <div class="alert alert-success">
+                     {{session()->get('message')}}
+                 </div>
+                @endif
                 <h1 class="h1_font">Products</h1>
                     <table class="content-table">
                         <thead>
